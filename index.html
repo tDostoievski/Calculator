@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title> Document </title> 
+</head>
+
+<body>
+    <div class="content">
+        <div class="visor">
+            <p class="numberoperation"> </p>
+        </div>
+        <div class="columns">
+            <div class="coluna1">
+                <button class="ac">AC</button>
+                <button onclick="addnumber(this)" > 7 </button>
+                <button onclick="addnumber(this)" class="number"> 4 </button>
+                <button onclick="addnumber(this)" class="number"> 1 </button>
+                <button onclick="addnumber(this)" class="number"></button>
+            </div>
+            <div class="coluna2">
+                <button onclick="deletenumber(this)" class="simbolo" id="delete"> </button>
+                <button onclick="addnumber(this)" class="number">8</button>
+                <button onclick="addnumber(this)" class="number">5</button>
+                <button onclick="addnumber(this)" class="number">2</button>
+                <button onclick="addnumber(this)" class="number">0</button>
+            </div> 
+            <div class="coluna3">
+                <button class="porcentagem">%</button>
+                <button onclick="addnumber(this)" class="number" >9</button>
+                <button onclick="addnumber(this)" class="number" >6</button>
+                <button onclick="addnumber(this)" class="number" >3</button>
+                <button class="virgula">,</button>
+            </div>
+            <div class="coluna4">
+                <button class="simbolo" id="divisao"></button>
+                <button class="simbolo" id="multiplicacao"> </button>
+                <button class="simbolo" id="subtracao"> </button>
+                <button onclick="adicao(this)" class="simbolo" id="adicao"> </button>
+                <button class="simbolo" id="resultado"></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+         let number1 = ""
+        const equal = document.getElementById("resultado")
+        const numberoperation = document.querySelector(".numberoperation");
+        function addnumber (evt) {   
+            const visornumber = evt.textContent; 
+            numberoperation.textContent += visornumber; 
+        }
+
+        function adicao () {
+            let number1 = numberoperation.textContent;
+            let operator = "+";
+            numberoperation.textContent += "+"
+            equal.addEventListener("click", () => {
+            let full = numberoperation.textContent;
+            let position = full.indexOf(operator);
+            let number2 = full.slice(position+operator.length).trim();
+            let resultado = parseInt (number1) + parseInt (number2);
+            numberoperation.textContent = resultado; 
+        });
+        }
+    
+
+
+        function deletenumber () {
+         
+            
+        }
+    </script>
+
+</body>
+</html>
