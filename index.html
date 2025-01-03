@@ -10,14 +10,14 @@
 <body>
     <div class="content">
         <div class="visor">
-            <p class="numberoperation"> </p>
+            <p class="visorcontent"> </p>
         </div>
         <div class="columns">
             <div class="coluna1">
                 <button class="ac">AC</button>
                 <button onclick="addnumber(this)" > 7 </button>
-                <button onclick="addnumber(this)" class="number"> 4 </button>
-                <button onclick="addnumber(this)" class="number"> 1 </button>
+                <button onclick="addnumber(this)" class="number">4</button>
+                <button onclick="addnumber(this)" class="number">1</button>
                 <button onclick="addnumber(this)" class="number"></button>
             </div>
             <div class="coluna2">
@@ -45,24 +45,22 @@
     </div>
 
     <script>
-         let number1 = ""
         const equal = document.getElementById("resultado")
-        const numberoperation = document.querySelector(".numberoperation");
+        const visorcontent = document.querySelector(".visorcontent");
+
         function addnumber (evt) {   
-            const visornumber = evt.textContent; 
-            numberoperation.textContent += visornumber; 
+            const newnumber = evt.textContent; 
+            visorcontent.textContent += newnumber; 
         }
 
         function adicao () {
-            let number1 = numberoperation.textContent;
-            let operator = "+";
-            numberoperation.textContent += "+"
+            visorcontent.textContent += "+"
             equal.addEventListener("click", () => {
-            let full = numberoperation.textContent;
-            let position = full.indexOf(operator);
-            let number2 = full.slice(position+operator.length).trim();
-            let resultado = parseInt (number1) + parseInt (number2);
-            numberoperation.textContent = resultado; 
+            console.log(visorcontent.textContent)
+            const fulloperation = visorcontent.textContent;
+            const parts = fulloperation.split("+").map(Number); 
+            const result = parts.reduce((acc, curr) => acc + curr, 0)
+            visorcontent.textContent = result; 
         });
         }
     
